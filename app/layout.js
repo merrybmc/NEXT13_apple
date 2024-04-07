@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
           <div className='navbar'>
             <Link href='/'>Home</Link>
             <Link href='/list'>List</Link>
+            <Link href='/cart'>Cart</Link>
           </div>
           {children}
           {/* page.js들이 props로 들어감 */}
