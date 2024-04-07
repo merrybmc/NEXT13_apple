@@ -1,5 +1,6 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import tomato from '@/public/tomato.png';
 import coconut from '@/public/coconut.png';
 import pasta from '@/public/pasta.png';
@@ -27,10 +28,23 @@ export default function List() {
       <h4 className='title'>상품목록</h4>
       {products.map((product, index) => (
         <div className='food' key={index}>
-          <Image src={product.image} className='food-img' />
-          <h4>{product.name}</h4>
+          <Product image={product.image} name={product.name} />
         </div>
       ))}
     </div>
   );
 }
+
+export const Product = ({ image, name }) => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <Image src={image} className='food-img' />
+      <h4>{name}</h4>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <span>{count}</span>
+      <button onClick={() => setCount(count - 1)}>-</button>
+    </>
+  );
+};
